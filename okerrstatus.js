@@ -15,7 +15,7 @@ function Indicator(props){
                 e('div', {className: 'dulldate', style: {float: 'right'}},
                     'Updated:', props.updated,e('br'),'Changed:', props.changed
                 ),
-                e('img', {src: '/img/' + props.status + '.png'}),' ',
+                e('img', {src: 'img/' + props.status + '.png'}),' ',
                 e('b', null, props.title), e('br'),
                 props.details ? e('span',{className: 'dull'} , props.details) : null, e('br'),
                 props.desc ? props.desc : null
