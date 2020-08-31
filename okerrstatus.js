@@ -10,6 +10,23 @@ function mdHtml(markdown){
     return e('div', {dangerouslySetInnerHTML: {__html: marked(markdown)}});
 }
 
+function play_alert() {
+    document.getElementById('alertwav').play();
+}
+
+function check_and_alert(data){
+    for(let ch in data.chapters){
+        for(let idx in data.chapters[ch]){
+            let i = data.chapters[ch][idx];
+            // console.log(i);
+            if(i.status == 'ERR'){
+                play_alert();
+                return;
+            }
+        }
+    }
+}
+
 function Indicator(props){
     var i = e('div', {key: props.title, className: 'sp_indicator'},
                 e('div', {className: 'dulldate', style: {float: 'right'}},
@@ -81,24 +98,32 @@ function updatePage(props){
     //descContainer.textContent = RawHTML(marked(props['desc']));
 }
 
+function updateStatus(props){
+    let url = new URL('/jstatus/' + props.textid + '/' + props.status, props.server).href;
+
+    fetch(url, {redirect: 'follow'})
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            updatePage(data);
+
+            const domContainer = document.querySelector('#chapters');
+            ReactDOM.render(status(data), domContainer);
+
+            check_and_alert(data);
+        })
+}
+
+
 // fetch config first
 fetch(configURL)
     .then((response) => {
         return response.json()
     })
     .then((data) => {
-        let url = new URL('/jstatus/' + data.textid + '/' + data.status, data.server).href;
-
-        fetch(url, {redirect: 'follow'})
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                updatePage(data);
-
-                const domContainer = document.querySelector('#chapters');
-                ReactDOM.render(status(data), domContainer);
-            })
+        updateStatus(data);
+        setInterval(() => updateStatus(data), 300 * 1000)
     })
 
 

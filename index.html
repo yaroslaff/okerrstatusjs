@@ -2,6 +2,7 @@
 <head>
     <title id="title"></title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/OK.png" type="image/x-icon">
     <meta charset="utf-8"/>
 </head>
 <body>
@@ -10,19 +11,37 @@
         <div class="smalledit">
             <h1 id="header"></h1>
             <div id="desc"></div>
-            <div id="chapters"></div>
-        </div>
-    </div>
+            <div id="chapters">
+                <div class="loading">
+                    <h1>Loading&nbsp;...</h1>
+                </div>
+            </div>
+
+            <div class=footer>
+                Эта страница статуса - часть open-source системы мониторинга <a href="https://okerr.com/">okerr</a>.
+                Вы можете сделать себе такую же страничку мониторинга, это бесплатно!
+                <br>
+                Использован JS фреймворк <a href="https://reactjs.org/">React</a> и библиотека <a href="https://github.com/markedjs/marked">marked</a>.
+
+                <br>
+                <a href="https://gitlab.com/yaroslaff/okerr-dev/">GIT репозиторий okerr-dev</a> |
+                <a href="https://gitlab.com/yaroslaff/okerr-dev/wikis/">Документация</a> |
+                <a href="https://gitlab.com/yaroslaff/okerrstatusjs/">GIT репозиторий этого проекта</a> |
+                <a href="https://okerr.freshdesk.com/">Поддержка</a> (<a href="mailto:support@okerr.com">support@okerr.com</a>) |
+            </div>
+        </div> <!-- smalledit -->
+    </div> <!-- divcontent -->
+
+    <!-- Loading scripts -->
 
     <!-- <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script> -->
 
+
+    <audio id="alertwav" src="sounds/alert2.mp3" preload="auto"></audio>
     <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
     <script src="okerrstatus.js"></script>
 </body>
 </html>
