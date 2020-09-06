@@ -8,6 +8,8 @@ To configure it for your project, adjust value of `textid` in `config.json` file
 Main status page for each project usually called `index`, but set `status` to other value if you need. Changing 
 `server` is not required, but it can save one small HTTP request and make status page little faster.
 
+To run it on [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/), clone this project and enable Pages for your site.
+
 # Other okerr resources
 - [Okerr main website](https://okerr.com/)
 - [Okerr-server source code repository](gitlab.com/yaroslaff/okerr-dev/) and [okerr server wiki doc](https://gitlab.com/yaroslaff/okerr-dev/wikis/)
