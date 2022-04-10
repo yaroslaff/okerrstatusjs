@@ -1,3 +1,4 @@
+
 'use strict';
 
 
@@ -7,7 +8,7 @@ const configURL = new URL('config.json', document.URL).href;
 var server, textid, status // will be initialized from JSON config
 
 function mdHtml(markdown){
-    return e('div', {dangerouslySetInnerHTML: {__html: marked(markdown)}});
+    return e('div', {dangerouslySetInnerHTML: {__html: marked.marked(markdown)}});
 }
 
 function play_alert() {
